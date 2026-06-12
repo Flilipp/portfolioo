@@ -2,7 +2,8 @@ import React from 'react';
 
 export default function Contact() {
   return (
-    <section className="w-full min-h-screen flex flex-col justify-center px-6 sm:px-12 md:px-24 bg-transparent border-t border-[#C8A96E]/10 relative z-10">
+    // FIX: Dodane id="contact" dla poprawnego działania kotwicy HTML
+    <section id="contact" className="w-full min-h-screen flex flex-col justify-center px-6 sm:px-12 md:px-24 bg-transparent border-t border-[#C8A96E]/10 relative z-10">
       
       <div className="max-w-xl w-full font-mono mx-auto lg:mx-0">
         <span className="text-[#C8A96E] text-xs tracking-widest block uppercase mb-2">// INICJACJA POŁĄCZENIA</span>
