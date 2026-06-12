@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    <section className="w-full min-h-screen flex flex-col justify-center px-6 sm:px-12 md:px-24 bg-transparent relative z-10 border-b border-[#C8A96E]/10">
+    <section className="w-full min-h-[85vh] md:min-h-screen flex flex-col justify-center px-6 sm:px-10 md:px-16 lg:px-20 py-16 md:py-20 bg-transparent relative z-10 border-b border-[#C8A96E]/10">
       
       <div className="max-w-4xl font-mono">
         {/* Mały token techniczny w kolorze złota */}
@@ -19,13 +19,13 @@ export default function Hero() {
           FULL-STACK DEVELOPERS & NETWORK ADMINISTRATORS
         </h2>
 
-        <p className="font-sans font-light text-gray-500 text-base md:text-lg max-w-2xl mt-6 leading-relaxed">
+        <p className="font-sans font-light text-gray-500 text-base md:text-lg max-w-2xl mt-4 md:mt-5 leading-relaxed">
           Zamiast generycznych szablonów, budujemy surowe, wydajne i skrojone pod wymiar aplikacje webowe. 
           Łączymy zaawansowaną logikę backendową z precyzyjnym frontendem i pełną automatyzacją środowisk sieciowych.
         </p>
 
         {/* Surowy, minimalistyczny przycisk z obramowaniem w kolorze Gold */}
-        <div className="mt-10 flex gap-4">
+        <div className="mt-6 md:mt-8 flex flex-wrap gap-3">
           <a 
             href="#projects" 
             className="border border-[#C8A96E] text-[#C8A96E] bg-[#C8A96E]/5 hover:bg-[#C8A96E]/20 text-xs tracking-widest uppercase px-6 py-3 rounded-md transition-all duration-300 font-bold"

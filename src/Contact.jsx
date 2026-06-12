@@ -3,11 +3,11 @@ import React from 'react';
 export default function Contact() {
   return (
     // FIX: Dodane id="contact" dla poprawnego działania kotwicy HTML
-    <section id="contact" className="w-full min-h-screen flex flex-col justify-center px-6 sm:px-12 md:px-24 bg-transparent border-t border-[#C8A96E]/10 relative z-10">
+    <section id="contact" className="w-full min-h-0 flex flex-col justify-center px-6 sm:px-10 md:px-16 lg:px-20 py-16 md:py-20 bg-transparent border-t border-[#C8A96E]/10 relative z-10">
       
       <div className="max-w-xl w-full font-mono mx-auto lg:mx-0">
         <span className="text-[#C8A96E] text-xs tracking-widest block uppercase mb-2">// INICJACJA POŁĄCZENIA</span>
-        <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-8">
+        <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-6">
           Wytnijmy nudę. <span className="text-[#C8A96E]">Zbudujmy coś.</span>
         </h2>
 
@@ -47,7 +47,7 @@ export default function Contact() {
           </button>
         </form>
 
-        <div className="mt-12 pt-6 border-t border-white/5 text-[10px] text-gray-600 flex justify-between">
+        <div className="mt-8 pt-5 border-t border-white/5 text-[10px] text-gray-600 flex justify-between">
           <span>HOST: VAULT_MAIN</span>
           <span>© 2026 FILIP & WIKTOR</span>
         </div>
