@@ -6,7 +6,7 @@ import Contact from './Contact';
 export default function App() {
   return (
     // Globalne tło Vault #111111
-    <div className="bg-[#111111] min-h-screen text-white antialiased relative overflow-hidden">
+    <div className="bg-[#111111] min-h-screen text-white antialiased relative overflow-x-hidden">
       
       {/* GLOBALNE TŁO: Subtelna siatka z liniami muśniętymi kolorem złota */}
       <div className="absolute inset-0 z-0 pointer-events-none">
