@@ -1,8 +1,9 @@
-import React from 'react';
+import Header from './Header';
 import Hero from './Hero';
+import Process from './Process';
 import ProjectsRing from './ProjectsRing';
+import Stack from './Stack';
 import Contact from './Contact';
-import ErrorBoundary from './ErrorBoundary';
 
 export default function App() {
   return (
@@ -18,10 +19,11 @@ export default function App() {
       </div>
 
       <div className="relative z-10">
+        <Header />
         <Hero />
-        <ErrorBoundary>
-          <ProjectsRing />
-        </ErrorBoundary>
+        <Process />
+        <ProjectsRing />
+        <Stack />
         <Contact />
       </div>
     </div>

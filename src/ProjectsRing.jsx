@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Suspense, useCallback } from 'react';
+import { useRef, useState, useEffect, useSyncExternalStore, Suspense, useCallback } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
@@ -9,13 +9,12 @@ const projectsData = [
     id: 1,
     title: 'MAKEFORGE',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Arduino'],
-    img: '/projects/makeforge-projects.jpg',
     gallery: [
+      { src: '/projects/makeforge-hero.jpg', label: 'Strona startowa' },
       { src: '/projects/makeforge-projects.jpg', label: 'Sekcja projektów' },
-      { src: '/projects/makeforge-chimera.jpg', label: 'Projekt Chimera — demo' },
     ],
     desc: 'Portfolio technologiczne z interaktywnymi kartami projektów (WearAI, Pusheen Arcade, Projekt Chimera) oraz rozbudowaną dokumentacją hardware/software — od UI po kod Arduino i symulację robota.',
-    challenge: 'Spójny dark-mode design z gradientami i czytelna prezentacja zarówno frontendu, jak i głębokiej dokumentacji technicznej.',
+    challenge: 'Spójny dark-mode design i czytelna prezentacja zarówno frontendu, jak i głębokiej dokumentacji technicznej.',
     roles: {
       filip: 'Integracja hardware–software, protokół Bluetooth, logika sterowania silnikami',
       wiktor: 'Frontend React, design system, animacje i sekcja projektów',
@@ -25,45 +24,75 @@ const projectsData = [
     id: 2,
     title: 'SEEGEST',
     tech: ['React', 'Google Maps', 'REST API', 'CSS'],
-    img: '/projects/seegest-home.jpg',
     gallery: [
       { src: '/projects/seegest-home.jpg', label: 'Panel główny — kalendarz' },
       { src: '/projects/seegest-map.jpg', label: 'Mapa wydarzeń' },
     ],
     desc: 'Platforma do zgłaszania i wyszukiwania lokalnych wydarzeń. Kalendarz z filtrami czasowymi, interaktywna mapa miasta i system postów z lokalizacją.',
-    challenge: 'Responsywny layout z sidebar’em, wielokolumnowym kalendarzem i mapą — spójny przepływ od wyszukiwania po szczegóły wydarzenia.',
+    challenge: 'Responsywny layout z sidebarem, wielokolumnowym kalendarzem i mapą — spójny przepływ od wyszukiwania po szczegóły wydarzenia.',
     roles: {
       filip: 'Backend API, autoryzacja, logika wyszukiwania i mapy',
       wiktor: 'UI komponenty, responsywny layout, panel konta i postów',
     },
   },
+  {
+    id: 3,
+    title: 'AMBERDATA HUB',
+    tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    gallery: [
+      { src: '/projects/amberdata-hero.jpg', label: 'Strona startowa hubu' },
+      { src: '/projects/amberdata-projects.jpg', label: 'Kafelki projektów' },
+    ],
+    desc: 'Centralny hub prezentujący ekosystem naszych projektów — od platformy danych i AI, przez moduły eksperymentalne, po showcase multimedialny. Każda karta to żywy podgląd osobnego produktu z jednego, spójnego miejsca.',
+    challenge: 'Zaprojektowanie jednego, eleganckiego punktu wejścia do kilku różnych produktów bez utraty ich indywidualnego charakteru.',
+    roles: {
+      filip: 'Architektura danych, integracja API poszczególnych modułów',
+      wiktor: 'UI hubu, system kart projektów, responsywność',
+    },
+  },
 ];
 
 function useIsMobile(breakpoint = 1024) {
-  const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth < breakpoint : false
-  );
-
-  useEffect(() => {
+  const subscribe = useCallback((callback) => {
     const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
-    const handler = (e) => setIsMobile(e.matches);
-    setIsMobile(mq.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    mq.addEventListener('change', callback);
+    return () => mq.removeEventListener('change', callback);
   }, [breakpoint]);
 
-  return isMobile;
+  const getSnapshot = useCallback(() => window.innerWidth < breakpoint, [breakpoint]);
+
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
+
+const MAX_W = 3.78;
+const MAX_H = 2.1;
 
 function CardGroup({ imageSrc, index, count, rotationRef, activeIndexRef, onBecomeActive }) {
   const meshRef = useRef();
-  const texture = useTexture(imageSrc);
+  const materialRef = useRef();
+  const backingRef = useRef();
+  const texture = useTexture(imageSrc, (tex) => {
+    const t = Array.isArray(tex) ? tex[0] : tex;
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.minFilter = THREE.LinearFilter;
+    t.magFilter = THREE.LinearFilter;
+    t.needsUpdate = true;
+  });
 
-  texture.minFilter = THREE.LinearFilter;
-  texture.magFilter = THREE.LinearFilter;
+  const imgAspect = texture.image ? texture.image.width / texture.image.height : 16 / 9;
+  const boxAspect = MAX_W / MAX_H;
+  let planeW;
+  let planeH;
+  if (imgAspect > boxAspect) {
+    planeW = MAX_W;
+    planeH = MAX_W / imgAspect;
+  } else {
+    planeH = MAX_H;
+    planeW = MAX_H * imgAspect;
+  }
 
   const angle = (index / count) * Math.PI * 2;
-  const radius = 3.4;
+  const radius = 4.2;
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -71,14 +100,13 @@ function CardGroup({ imageSrc, index, count, rotationRef, activeIndexRef, onBeco
     const currentAngle = angle + rotationRef.current;
     meshRef.current.position.x = Math.sin(currentAngle) * radius;
     meshRef.current.position.z = Math.cos(currentAngle) * radius;
-    meshRef.current.rotation.y = currentAngle + Math.PI;
 
     const targetX = state.pointer.x * 0.05;
     const targetY = state.pointer.y * 0.05;
     meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, targetY, 0.1);
     meshRef.current.rotation.y = THREE.MathUtils.lerp(
       meshRef.current.rotation.y,
-      currentAngle + Math.PI + targetX,
+      currentAngle + targetX,
       0.1
     );
 
@@ -87,20 +115,42 @@ function CardGroup({ imageSrc, index, count, rotationRef, activeIndexRef, onBeco
       activeIndexRef.current = index;
       onBecomeActive(index);
     }
-  });
 
-  const isActive = activeIndexRef.current === index;
+    const isActive = activeIndexRef.current === index;
+    const targetOpacity = isActive ? 1.0 : 0.28;
+    const targetScale = isActive ? 1.0 : 0.92;
+
+    if (materialRef.current) {
+      materialRef.current.opacity = THREE.MathUtils.lerp(materialRef.current.opacity, targetOpacity, 0.08);
+    }
+    if (backingRef.current) {
+      backingRef.current.material.opacity = THREE.MathUtils.lerp(
+        backingRef.current.material.opacity,
+        isActive ? 0.9 : 0.35,
+        0.08
+      );
+    }
+    const currentScale = meshRef.current.scale.x;
+    const nextScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.08);
+    meshRef.current.scale.setScalar(nextScale);
+  });
 
   return (
     <group ref={meshRef}>
+      <mesh ref={backingRef} position={[0, 0, -0.03]}>
+        <planeGeometry args={[planeW + 0.12, planeH + 0.12]} />
+        <meshStandardMaterial color="#0c0c0c" roughness={0.9} transparent opacity={0.9} side={THREE.DoubleSide} />
+      </mesh>
       <mesh>
-        <boxGeometry args={[2.4, 1.35, 0.02]} />
+        <planeGeometry args={[planeW, planeH]} />
         <meshStandardMaterial
+          ref={materialRef}
           map={texture}
-          roughness={0.5}
-          metalness={0.1}
+          roughness={0.45}
+          metalness={0.05}
           transparent
-          opacity={isActive ? 1.0 : 0.25}
+          opacity={1}
+          side={THREE.DoubleSide}
         />
       </mesh>
     </group>
@@ -109,8 +159,8 @@ function CardGroup({ imageSrc, index, count, rotationRef, activeIndexRef, onBeco
 
 function SceneFloor() {
   return (
-    <group position={[0, -1.2, 0]}>
-      <pointLight distance={6} intensity={1.5} color="#C8A96E" position={[0, 0.5, 0]} />
+    <group position={[0, -1.3, 0]}>
+      <pointLight distance={7} intensity={2.2} color="#C8A96E" position={[0, 0.6, 0]} />
       <gridHelper args={[30, 30, '#C8A96E', '#1a1a1a']} />
     </group>
   );
@@ -139,12 +189,9 @@ function Scene({
     if (!isMovingToTargetRef.current) {
       if (Math.abs(diff) > step * 0.15) {
         const direction = Math.sign(diff);
-        const nextIndex = baseIndexRef.current + direction;
-        if (nextIndex >= 0 && nextIndex < count) {
-          baseIndexRef.current = nextIndex;
-          isMovingToTargetRef.current = true;
-          velocityRef.current = 0;
-        }
+        baseIndexRef.current -= direction;
+        isMovingToTargetRef.current = true;
+        velocityRef.current = 0;
       } else if (Math.abs(velocityRef.current) < 0.001) {
         rotationRef.current = THREE.MathUtils.lerp(rotationRef.current, currentBaseRotation, 0.1);
       }
@@ -164,15 +211,16 @@ function Scene({
 
   return (
     <>
-      <ambientLight intensity={0.8} />
-      <directionalLight position={[0, 5, 5]} intensity={0.5} color="#ffffff" />
+      <ambientLight intensity={0.55} />
+      <directionalLight position={[0, 5, 5]} intensity={0.6} color="#ffffff" />
+      <pointLight position={[0, 1.5, -4]} intensity={1.2} color="#C8A96E" distance={10} />
       <SceneFloor />
 
       <group position={[0, 0.1, -2.5]}>
         {projectsData.map((project, idx) => (
           <CardGroup
-            key={`${project.id}-${previewImages[project.id] ?? project.img}`}
-            imageSrc={previewImages[project.id] ?? project.img}
+            key={`${project.id}-${previewImages[project.id]}`}
+            imageSrc={previewImages[project.id]}
             index={idx}
             count={count}
             rotationRef={rotationRef}
@@ -234,7 +282,7 @@ function MobileProjectViewer({
         }
       }}
     >
-      <div className="relative w-full aspect-video bg-[#0a0a0a] border border-[#C8A96E]/20 rounded-2xl overflow-hidden shadow-lg">
+      <div className="relative w-full aspect-[16/9] bg-[#0a0a0a] border border-[#C8A96E]/20 rounded-2xl overflow-hidden shadow-lg">
         <ProjectPreview src={shot.src} title={project.title} />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent px-4 py-3">
           <h2 className="text-lg font-bold tracking-tight text-[#C8A96E] font-mono uppercase">
@@ -289,13 +337,11 @@ function MobileProjectViewer({
 }
 
 export default function ProjectsRing() {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [galleryIndices, setGalleryIndices] = useState(() =>
-    Object.fromEntries(projectsData.map((p) => [p.id, 0]))
-  );
-  const [previewImages, setPreviewImages] = useState(() =>
-    Object.fromEntries(projectsData.map((p) => [p.id, p.img]))
-  );
+  const [view, setView] = useState(() => ({
+    index: 0,
+    gallery: Object.fromEntries(projectsData.map((p) => [p.id, 0])),
+    preview: Object.fromEntries(projectsData.map((p) => [p.id, p.gallery[0].src])),
+  }));
   const isMobile = useIsMobile();
   const carouselRef = useRef(null);
 
@@ -305,21 +351,30 @@ export default function ProjectsRing() {
   const baseIndexRef = useRef(0);
   const isMovingToTargetRef = useRef(false);
 
+  const currentProjectIndex = view.index;
   const activeProject = projectsData[currentProjectIndex];
-  const activePreview = previewImages[activeProject.id] ?? activeProject.img;
-  const galleryIndex = galleryIndices[activeProject.id] ?? 0;
+  const activePreview = view.preview[activeProject.id];
+  const galleryIndex = view.gallery[activeProject.id] ?? 0;
+  const previewImages = view.preview;
   const count = projectsData.length;
 
   const goToIndex = useCallback((nextIndex) => {
-    if (nextIndex < 0 || nextIndex >= count) return;
-    baseIndexRef.current = nextIndex;
-    activeIndexRef.current = nextIndex;
+    const wrapped = ((nextIndex % count) + count) % count;
+    const currentMod = ((baseIndexRef.current % count) + count) % count;
+    let delta = wrapped - currentMod;
+    if (delta > count / 2) delta -= count;
+    if (delta < -count / 2) delta += count;
+
+    baseIndexRef.current += delta;
+    activeIndexRef.current = wrapped;
     isMovingToTargetRef.current = true;
     velocityRef.current = 0;
-    const project = projectsData[nextIndex];
-    setCurrentProjectIndex(nextIndex);
-    setGalleryIndices((prev) => ({ ...prev, [project.id]: 0 }));
-    setPreviewImages((prev) => ({ ...prev, [project.id]: project.img }));
+    const project = projectsData[wrapped];
+    setView((prev) => ({
+      index: wrapped,
+      gallery: { ...prev.gallery, [project.id]: 0 },
+      preview: { ...prev.preview, [project.id]: project.gallery[0].src },
+    }));
   }, [count]);
 
   const setGalleryForProject = (projectId, index) => {
@@ -327,8 +382,11 @@ export default function ProjectsRing() {
     if (!project) return;
     const shot = project.gallery[index];
     if (!shot) return;
-    setGalleryIndices((prev) => ({ ...prev, [projectId]: index }));
-    setPreviewImages((prev) => ({ ...prev, [projectId]: shot.src }));
+    setView((prev) => ({
+      ...prev,
+      gallery: { ...prev.gallery, [projectId]: index },
+      preview: { ...prev.preview, [projectId]: shot.src },
+    }));
   };
 
   const pushCarousel = (direction) => {
@@ -336,14 +394,16 @@ export default function ProjectsRing() {
   };
 
   const handleBecomeActive = useCallback((index) => {
-    setCurrentProjectIndex((prev) => (prev === index ? prev : index));
+    setView((prev) => {
+      if (prev.index === index) return prev;
+      const project = projectsData[index];
+      return {
+        index,
+        gallery: { ...prev.gallery, [project.id]: 0 },
+        preview: { ...prev.preview, [project.id]: project.gallery[0].src },
+      };
+    });
   }, []);
-
-  useEffect(() => {
-    const project = projectsData[currentProjectIndex];
-    setGalleryIndices((prev) => ({ ...prev, [project.id]: 0 }));
-    setPreviewImages((prev) => ({ ...prev, [project.id]: project.img }));
-  }, [currentProjectIndex]);
 
   // Scroll kółkiem — zawsze aktywny nad karuzelą (desktop)
   useEffect(() => {
@@ -376,8 +436,8 @@ export default function ProjectsRing() {
         <span className="md:hidden block mt-1 text-gray-600">przesuń palcem w bok</span>
       </div>
 
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5 items-start relative z-10">
-        <div className="hidden lg:flex lg:col-span-3 text-white font-mono flex-col gap-4">
+      <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5 items-start relative z-10">
+        <div className="hidden lg:flex lg:col-span-2 text-white font-mono flex-col gap-4">
           <div className="border-l border-[#C8A96E] pl-4">
             <span className="text-[#C8A96E] text-[10px] tracking-widest block uppercase">
               // OPIS PROJEKTU
@@ -396,7 +456,7 @@ export default function ProjectsRing() {
           </div>
         </div>
 
-        <div className="lg:col-span-6 flex flex-col items-center gap-3 w-full">
+        <div className="lg:col-span-8 flex flex-col items-center gap-3 w-full">
           {isMobile ? (
             <MobileProjectViewer
               project={activeProject}
@@ -411,10 +471,10 @@ export default function ProjectsRing() {
           ) : (
             <div
               ref={carouselRef}
-              className="relative w-full aspect-[16/10] max-h-[420px] bg-[#111111] border border-[#C8A96E]/20 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] overflow-hidden transition-all duration-300 hover:border-[#C8A96E]/40 cursor-grab active:cursor-grabbing"
+              className="relative w-full aspect-[16/9] max-h-[760px] bg-[#111111] border border-[#C8A96E]/20 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.8)] overflow-hidden transition-all duration-300 hover:border-[#C8A96E]/40 cursor-grab active:cursor-grabbing"
             >
               <ErrorBoundary fallback={staticFallback}>
-                <Canvas camera={{ position: [0, 0, 4.2], fov: 50 }}>
+                <Canvas camera={{ position: [0, 0, 5.4], fov: 50 }}>
                   <Suspense fallback={null}>
                     <Scene
                       rotationRef={rotationRef}
@@ -429,11 +489,11 @@ export default function ProjectsRing() {
                 </Canvas>
               </ErrorBoundary>
 
-              <div className="absolute inset-x-0 bottom-4 z-20 pointer-events-none text-center">
-                <h2 className="text-xl font-bold tracking-tight text-[#C8A96E] font-mono uppercase">
+              <div className="absolute inset-x-0 bottom-6 z-20 pointer-events-none text-center">
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#C8A96E] font-mono uppercase">
                   {activeProject.title}
                 </h2>
-                <p className="text-[10px] text-gray-500 font-mono mt-0.5">
+                <p className="text-xs text-gray-500 font-mono mt-1">
                   {activeProject.gallery[galleryIndex]?.label}
                 </p>
               </div>
@@ -451,7 +511,7 @@ export default function ProjectsRing() {
                 key={shot.src}
                 onClick={() => setGalleryForProject(activeProject.id, i)}
                 title={shot.label}
-                className={`group relative w-24 h-14 md:w-28 md:h-16 rounded-lg overflow-hidden border transition-all ${
+                className={`group relative w-28 h-16 md:w-36 md:h-20 rounded-lg overflow-hidden border transition-all ${
                   galleryIndex === i
                     ? 'border-[#C8A96E] opacity-100 ring-1 ring-[#C8A96E]/40'
                     : 'border-white/10 opacity-60 hover:opacity-90'
@@ -466,7 +526,7 @@ export default function ProjectsRing() {
           </div>
         </div>
 
-        <div className="lg:col-span-3 text-white font-mono flex flex-col gap-4">
+        <div className="lg:col-span-2 text-white font-mono flex flex-col gap-4">
           <div className="lg:hidden space-y-4">
             <div className="border-l border-[#C8A96E] pl-4">
               <span className="text-[#C8A96E] text-[10px] tracking-widest block uppercase">
@@ -520,6 +580,19 @@ export default function ProjectsRing() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex gap-2 mt-6 relative z-10">
+        {projectsData.map((p, idx) => (
+          <button
+            key={p.id}
+            onClick={() => goToIndex(idx)}
+            aria-label={`Pokaż projekt ${p.title}`}
+            className={`h-1.5 rounded-full transition-all ${
+              idx === currentProjectIndex ? 'w-8 bg-[#C8A96E]' : 'w-3 bg-white/15 hover:bg-white/30'
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
