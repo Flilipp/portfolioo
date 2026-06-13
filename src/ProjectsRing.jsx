@@ -8,6 +8,7 @@ const projectsData = [
   {
     id: 1,
     title: 'MAKEFORGE',
+    tagline: 'Portfolio technologiczne młodego robotyka — prezentuje własne projekty (roboty, gadżety, AI) razem z pełną dokumentacją techniczną.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Arduino'],
     gallery: [
       { src: '/projects/makeforge-hero.jpg', label: 'Strona startowa' },
@@ -23,6 +24,7 @@ const projectsData = [
   {
     id: 2,
     title: 'SEEGEST',
+    tagline: 'Aplikacja społecznościowa, w której namierzysz osoby mijane w mieście i umówisz się z nimi na spotkanie.',
     tech: ['React', 'Google Maps', 'REST API', 'CSS'],
     gallery: [
       { src: '/projects/seegest-home.jpg', label: 'Panel główny — kalendarz' },
@@ -38,6 +40,7 @@ const projectsData = [
   {
     id: 3,
     title: 'AMBERDATA HUB',
+    tagline: 'Strona-hub, która zbiera wszystkie nasze projekty w jednym miejscu — jak strona startowa firmy technologicznej.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
     gallery: [
       { src: '/projects/amberdata-hero.jpg', label: 'Strona startowa hubu' },
@@ -48,6 +51,86 @@ const projectsData = [
     roles: {
       filip: 'Architektura danych, integracja API poszczególnych modułów',
       wiktor: 'UI hubu, system kart projektów, responsywność',
+    },
+  },
+  {
+    id: 4,
+    title: 'TRATTORIA ROSSO',
+    tagline: 'Strona internetowa dla włoskiej restauracji — apetyczne menu, galeria dań i rezerwacja stolika online.',
+    tech: ['HTML', 'Tailwind CSS', 'Responsywny design'],
+    gallery: [
+      { src: '/projects/rosso/hero.jpg', label: 'Strona startowa' },
+      { src: '/projects/rosso/menu.jpg', label: 'Karta menu' },
+    ],
+    desc: 'Strona promocyjna restauracji z podziałem menu na kategorie (antipasti, pasta, pizza, dolci), sekcją "nasza historia", galerią dań i formularzem rezerwacji stolika.',
+    challenge: 'Zbudowanie ciepłego, "apetycznego" nastroju przy użyciu samej typografii, koloru i prostych ilustracji — bez prawdziwych zdjęć potraw.',
+    roles: {
+      filip: 'Struktura treści, opisy dań i menu, dane kontaktowe',
+      wiktor: 'Layout, paleta kolorów, komponenty UI i formularz rezerwacji',
+    },
+  },
+  {
+    id: 5,
+    title: 'VELORA',
+    tagline: 'Sklep internetowy z modą — przegląd kolekcji, karty produktów i zapis do newslettera z rabatem.',
+    tech: ['HTML', 'Tailwind CSS', 'E-commerce UI'],
+    gallery: [
+      { src: '/projects/velora/hero.jpg', label: 'Strona startowa' },
+      { src: '/projects/velora/collection.jpg', label: 'Kolekcja sezonowa' },
+    ],
+    desc: 'Strona sklepu odzieżowego z prezentacją kolekcji sezonowej, siatką produktów bestsellerowych i sekcją "o marce" budującą wizerunek premium.',
+    challenge: 'Edytorialski, "modowy" styl — duża typografia, dużo przestrzeni i spokojna, jednolita paleta barw.',
+    roles: {
+      filip: 'Struktura kategorii produktów, opisy i ceny',
+      wiktor: 'Layout, typografia, siatka produktów i formularz newslettera',
+    },
+  },
+  {
+    id: 6,
+    title: 'PULSEFIT',
+    tagline: 'Strona siłowni z grafikiem zajęć, cennikiem karnetów i zapisami na trening — mocny, energetyczny design.',
+    tech: ['HTML', 'Tailwind CSS', 'Responsywny design'],
+    gallery: [
+      { src: '/projects/pulsefit/hero.jpg', label: 'Strona startowa' },
+      { src: '/projects/pulsefit/pricing.jpg', label: 'Cennik karnetów' },
+    ],
+    desc: 'Strona klubu fitness z sekcją statystyk, grafikiem zajęć grupowych, profilami trenerów oraz trzema planami cenowymi karnetów.',
+    challenge: 'Mocny, kontrastowy design (czarny + neonowa zieleń) i czytelna tabela grafiku zajęć na urządzeniach mobilnych.',
+    roles: {
+      filip: 'Struktura grafiku zajęć, dane trenerów i cennik',
+      wiktor: 'Layout, paleta neonowa, tabela zajęć i karty cenowe',
+    },
+  },
+  {
+    id: 7,
+    title: 'GLOW STUDIO',
+    tagline: 'Strona salonu kosmetycznego z cennikiem usług, galerią metamorfoz i rezerwacją wizyt online.',
+    tech: ['HTML', 'Tailwind CSS', 'Responsywny design'],
+    gallery: [
+      { src: '/projects/glow/hero.jpg', label: 'Strona startowa' },
+      { src: '/projects/glow/services.jpg', label: 'Cennik usług' },
+    ],
+    desc: 'Strona salonu beauty z cennikiem usług podzielonym na kategorie (twarz, paznokcie, masaże), galerią metamorfoz, opiniami klientek i formularzem rezerwacji.',
+    challenge: 'Stworzenie eleganckiej, pastelowej atmosfery spa przy zachowaniu przejrzystego cennika i czytelnego formularza.',
+    roles: {
+      filip: 'Struktura cennika, opinie klientek, dane kontaktowe',
+      wiktor: 'Layout, paleta pastelowa, galeria i formularz rezerwacji',
+    },
+  },
+  {
+    id: 8,
+    title: 'ROOT & BLOOM',
+    tagline: 'Sklep z roślinami i akcesoriami ogrodniczymi — katalog roślin, poradnik pielęgnacji i dostawa do domu.',
+    tech: ['HTML', 'Tailwind CSS', 'Responsywny design'],
+    gallery: [
+      { src: '/projects/rootbloom/hero.jpg', label: 'Strona startowa' },
+      { src: '/projects/rootbloom/shop.jpg', label: 'Katalog roślin' },
+    ],
+    desc: 'Strona sklepu z roślinami doniczkowymi i akcesoriami — katalog bestsellerów, sekcja akcesoriów, poradnik pielęgnacji i zapis do newslettera.',
+    challenge: 'Naturalny, "ekologiczny" charakter marki — ciepła, ziemista paleta i przejrzysta prezentacja produktów bez prawdziwych zdjęć.',
+    roles: {
+      filip: 'Struktura katalogu roślin, opisy i poradnik pielęgnacji',
+      wiktor: 'Layout, paleta naturalna, siatka produktów i sekcje informacyjne',
     },
   },
 ];
@@ -434,6 +517,12 @@ export default function ProjectsRing() {
         <span className="text-[#C8A96E] font-bold">// ELASTIC VAULT INSTANCE</span>
         <span className="hidden md:inline"> — NAJEŻDŹ KURSOREM I PRZEWIŃ KÓŁKIEM</span>
         <span className="md:hidden block mt-1 text-gray-600">przesuń palcem w bok</span>
+      </div>
+
+      <div className="text-center mb-8 md:mb-10 max-w-2xl relative z-10 px-4">
+        <p className="text-base sm:text-lg md:text-xl text-white font-semibold leading-snug">
+          {activeProject.tagline}
+        </p>
       </div>
 
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5 items-start relative z-10">

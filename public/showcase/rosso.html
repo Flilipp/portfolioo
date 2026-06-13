@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trattoria Rosso — Kuchnia włoska w sercu miasta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          rosso: {
+            900: '#3b0a0a',
+            800: '#5c1010',
+            700: '#7a1414',
+            600: '#9c1d1d',
+            DEFAULT: '#8a1c1c',
+          },
+          cream: '#f7f1e6',
+          gold: '#d4af6a',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .font-serif { font-family: 'Playfair Display', serif; }
+</style>
+</head>
+<body class="bg-cream text-rosso-900">
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-rosso-900/95 backdrop-blur text-cream">
+    <nav class="max-w-6xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#" class="font-serif text-2xl font-bold tracking-wide">
+        Trattoria <span class="text-gold">Rosso</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10 text-sm uppercase tracking-widest font-medium">
+        <a href="#menu" class="hover:text-gold transition">Menu</a>
+        <a href="#about" class="hover:text-gold transition">O nas</a>
+        <a href="#gallery" class="hover:text-gold transition">Galeria</a>
+        <a href="#reserve" class="hover:text-gold transition">Rezerwacja</a>
+      </div>
+      <a href="#reserve" class="hidden sm:inline-block border border-gold text-gold text-xs uppercase tracking-widest px-5 py-2.5 rounded-full hover:bg-gold hover:text-rosso-900 transition">
+        Zarezerwuj stolik
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative h-screen min-h-[640px] flex items-center justify-center text-center text-cream overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-rosso-900 via-rosso-700 to-rosso-800"></div>
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 30%, white 1px, transparent 1px), radial-gradient(circle at 80% 70%, white 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="relative z-10 px-6 max-w-3xl">
+      <span class="text-gold uppercase tracking-[0.3em] text-xs font-semibold">Od 1998 roku</span>
+      <h1 class="font-serif text-5xl sm:text-7xl font-extrabold mt-4 leading-tight">
+        Autentyczny smak<br/> Włoch w&nbsp;<span class="text-gold">Twoim mieście</span>
+      </h1>
+      <p class="mt-6 text-cream/80 text-lg font-light max-w-xl mx-auto">
+        Świeże makarony robione na miejscu, sosy gotowane godzinami i wino z rodzinnej winnicy w Toskanii.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="#reserve" class="bg-gold text-rosso-900 px-8 py-3.5 rounded-full font-semibold uppercase tracking-widest text-sm hover:bg-cream transition">
+          Zarezerwuj stolik
+        </a>
+        <a href="#menu" class="border border-cream/30 px-8 py-3.5 rounded-full font-semibold uppercase tracking-widest text-sm hover:border-gold hover:text-gold transition">
+          Zobacz menu
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-6 text-cream/40 text-xs uppercase tracking-widest animate-bounce">Przewiń ↓</div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <section class="bg-cream border-b border-rosso-900/10">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 py-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      <div>
+        <div class="text-3xl mb-1">🍝</div>
+        <p class="text-xs uppercase tracking-widest font-semibold">Domowy makaron</p>
+      </div>
+      <div>
+        <div class="text-3xl mb-1">🍷</div>
+        <p class="text-xs uppercase tracking-widest font-semibold">Włoskie wina</p>
+      </div>
+      <div>
+        <div class="text-3xl mb-1">🔥</div>
+        <p class="text-xs uppercase tracking-widest font-semibold">Piec na drewno</p>
+      </div>
+      <div>
+        <div class="text-3xl mb-1">🌿</div>
+        <p class="text-xs uppercase tracking-widest font-semibold">Świeże składniki</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="max-w-6xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center mb-14">
+      <span class="text-rosso-600 uppercase tracking-[0.3em] text-xs font-semibold">Nasza karta</span>
+      <h2 class="font-serif text-4xl sm:text-5xl font-bold mt-3">Menu Trattorii</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-16 gap-y-10">
+      <div>
+        <h3 class="font-serif text-2xl font-bold text-rosso-700 mb-5 border-b border-gold/40 pb-2">Antipasti</h3>
+        <div class="space-y-5">
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Bruschetta al Pomodoro</p>
+              <p class="text-sm text-rosso-900/60">Grillowany chleb, pomidory, bazylia, oliwa</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">22 zł</span>
+          </div>
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Carpaccio z Polędwicy</p>
+              <p class="text-sm text-rosso-900/60">Parmezan, rukola, oliwa truflowa</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">38 zł</span>
+          </div>
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Burrata Pugliese</p>
+              <p class="text-sm text-rosso-900/60">Pomidorki koktajlowe, pesto, chleb</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">34 zł</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-serif text-2xl font-bold text-rosso-700 mb-5 border-b border-gold/40 pb-2">Pasta &amp; Risotto</h3>
+        <div class="space-y-5">
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Tagliatelle al Tartufo</p>
+              <p class="text-sm text-rosso-900/60">Świeży makaron, krem truflowy, parmezan</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">52 zł</span>
+          </div>
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Spaghetti Vongole</p>
+              <p class="text-sm text-rosso-900/60">Małże, czosnek, białe wino, chili</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">58 zł</span>
+          </div>
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Risotto ai Funghi</p>
+              <p class="text-sm text-rosso-900/60">Borowiki, masło, parmezan, tymianek</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">46 zł</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-serif text-2xl font-bold text-rosso-700 mb-5 border-b border-gold/40 pb-2">Pizza z Pieca</h3>
+        <div class="space-y-5">
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Margherita</p>
+              <p class="text-sm text-rosso-900/60">Pomidor, mozzarella fior di latte, bazylia</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">36 zł</span>
+          </div>
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Diavola</p>
+              <p class="text-sm text-rosso-900/60">Salami piccante, chili, mozzarella</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">42 zł</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-serif text-2xl font-bold text-rosso-700 mb-5 border-b border-gold/40 pb-2">Dolci</h3>
+        <div class="space-y-5">
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Tiramisù della Casa</p>
+              <p class="text-sm text-rosso-900/60">Mascarpone, espresso, kakao</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">24 zł</span>
+          </div>
+          <div class="flex justify-between gap-4">
+            <div>
+              <p class="font-semibold">Panna Cotta</p>
+              <p class="text-sm text-rosso-900/60">Owoce leśne, wanilia z Madagaskaru</p>
+            </div>
+            <span class="font-serif font-bold text-gold whitespace-nowrap">22 zł</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-rosso-900 text-cream">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 py-24 grid md:grid-cols-2 gap-14 items-center">
+      <div class="aspect-[4/5] rounded-2xl bg-gradient-to-br from-rosso-600 via-rosso-800 to-rosso-900 flex items-center justify-center text-8xl shadow-2xl ring-1 ring-gold/20">
+        👨‍🍳
+      </div>
+      <div>
+        <span class="text-gold uppercase tracking-[0.3em] text-xs font-semibold">Nasza historia</span>
+        <h2 class="font-serif text-4xl font-bold mt-3 mb-6">Rodzinna receptura, trzy pokolenia</h2>
+        <p class="text-cream/70 leading-relaxed mb-4">
+          Trattoria Rosso powstała z miłości do prawdziwej, domowej kuchni włoskiej. Receptury na sosy
+          i makarony przekazywane są w naszej rodzinie od babci Marii z Bolonii — i wciąż przygotowujemy
+          je z tymi samymi proporcjami, czasem i cierpliwością.
+        </p>
+        <p class="text-cream/70 leading-relaxed">
+          Każdego dnia wypiekamy chleb, ręcznie wałkujemy makaron i sprowadzamy oliwę
+          oraz wino prosto z toskańskich winnic partnerskich.
+        </p>
+        <div class="grid grid-cols-3 gap-6 mt-10">
+          <div>
+            <p class="font-serif text-3xl font-bold text-gold">26</p>
+            <p class="text-xs uppercase tracking-widest text-cream/50 mt-1">lat tradycji</p>
+          </div>
+          <div>
+            <p class="font-serif text-3xl font-bold text-gold">120+</p>
+            <p class="text-xs uppercase tracking-widest text-cream/50 mt-1">dań w menu</p>
+          </div>
+          <div>
+            <p class="font-serif text-3xl font-bold text-gold">4.9★</p>
+            <p class="text-xs uppercase tracking-widest text-cream/50 mt-1">ocena gości</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="max-w-6xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center mb-12">
+      <span class="text-rosso-600 uppercase tracking-[0.3em] text-xs font-semibold">Z naszej kuchni</span>
+      <h2 class="font-serif text-4xl sm:text-5xl font-bold mt-3">Galeria</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-amber-700 to-rosso-800 flex items-center justify-center text-5xl">🍝</div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-rosso-600 to-rosso-900 flex items-center justify-center text-5xl col-span-2 row-span-2 sm:text-7xl">🍕</div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-amber-600 to-amber-900 flex items-center justify-center text-5xl">🍷</div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-rosso-700 to-amber-800 flex items-center justify-center text-5xl">🥖</div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-amber-800 to-rosso-900 flex items-center justify-center text-5xl">🍰</div>
+      <div class="aspect-square rounded-2xl bg-gradient-to-br from-rosso-800 to-amber-700 flex items-center justify-center text-5xl">🧀</div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section id="reserve" class="bg-gradient-to-br from-rosso-800 to-rosso-900 text-cream">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 py-24 text-center">
+      <span class="text-gold uppercase tracking-[0.3em] text-xs font-semibold">Stolik na ten wieczór?</span>
+      <h2 class="font-serif text-4xl sm:text-5xl font-bold mt-3 mb-10">Zarezerwuj swój stolik</h2>
+      <form class="grid sm:grid-cols-2 gap-4 text-left">
+        <div>
+          <label class="text-xs uppercase tracking-widest text-cream/60">Imię i nazwisko</label>
+          <input type="text" placeholder="Jan Kowalski" class="mt-2 w-full bg-cream/5 border border-cream/20 rounded-lg px-4 py-3 placeholder:text-cream/30 focus:outline-none focus:border-gold" />
+        </div>
+        <div>
+          <label class="text-xs uppercase tracking-widest text-cream/60">Telefon</label>
+          <input type="text" placeholder="+48 600 000 000" class="mt-2 w-full bg-cream/5 border border-cream/20 rounded-lg px-4 py-3 placeholder:text-cream/30 focus:outline-none focus:border-gold" />
+        </div>
+        <div>
+          <label class="text-xs uppercase tracking-widest text-cream/60">Data</label>
+          <input type="text" placeholder="12.06.2026" class="mt-2 w-full bg-cream/5 border border-cream/20 rounded-lg px-4 py-3 placeholder:text-cream/30 focus:outline-none focus:border-gold" />
+        </div>
+        <div>
+          <label class="text-xs uppercase tracking-widest text-cream/60">Liczba osób</label>
+          <input type="text" placeholder="2" class="mt-2 w-full bg-cream/5 border border-cream/20 rounded-lg px-4 py-3 placeholder:text-cream/30 focus:outline-none focus:border-gold" />
+        </div>
+        <button type="button" class="sm:col-span-2 mt-2 bg-gold text-rosso-900 px-8 py-4 rounded-full font-semibold uppercase tracking-widest text-sm hover:bg-cream transition">
+          Potwierdź rezerwację
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-rosso-900 text-cream/60 border-t border-cream/10">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 py-12 grid sm:grid-cols-3 gap-10 text-sm">
+      <div>
+        <p class="font-serif text-xl text-cream font-bold mb-3">Trattoria <span class="text-gold">Rosso</span></p>
+        <p>ul. Słoneczna 14<br/>00-123 Warszawa</p>
+      </div>
+      <div>
+        <p class="text-cream uppercase tracking-widest text-xs font-semibold mb-3">Godziny otwarcia</p>
+        <p>Pon–Pt: 12:00 – 22:00</p>
+        <p>Sob–Nd: 12:00 – 23:00</p>
+      </div>
+      <div>
+        <p class="text-cream uppercase tracking-widest text-xs font-semibold mb-3">Kontakt</p>
+        <p>tel. +48 22 123 45 67</p>
+        <p>kontakt@trattoriarosso.pl</p>
+      </div>
+    </div>
+    <div class="text-center text-xs py-4 border-t border-cream/5">© 2026 Trattoria Rosso — projekt demonstracyjny</div>
+  </footer>
+
+</body>
+</html>

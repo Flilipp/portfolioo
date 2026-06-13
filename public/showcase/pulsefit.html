@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PULSEFIT — Klub fitness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Archivo Black"', 'sans-serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          lime: '#d4ff3f',
+          dark: '#0d0d0d',
+          panel: '#171717',
+        }
+      }
+    }
+  }
+</script>
+<style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-dark text-white">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-dark/90 backdrop-blur border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#" class="font-display text-2xl tracking-tight">
+        PULSE<span class="text-lime">FIT</span>
+      </a>
+      <div class="hidden md:flex items-center gap-9 text-sm font-semibold uppercase tracking-wide text-white/70">
+        <a href="#classes" class="hover:text-lime transition">Zajęcia</a>
+        <a href="#trainers" class="hover:text-lime transition">Trenerzy</a>
+        <a href="#pricing" class="hover:text-lime transition">Cennik</a>
+        <a href="#contact" class="hover:text-lime transition">Kontakt</a>
+      </div>
+      <a href="#pricing" class="bg-lime text-dark px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white transition">
+        Zapisz się
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-lime/20 rounded-full blur-3xl"></div>
+    <div class="absolute top-40 -left-40 w-80 h-80 bg-lime/10 rounded-full blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 bg-panel border border-white/10 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-lime font-semibold">
+          <span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span> Otwarte 24/7
+        </span>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl mt-6 leading-[1.05]">
+          ZBUDUJ<br/>SWOJĄ<br/><span class="text-lime">NAJLEPSZĄ</span><br/>WERSJĘ
+        </h1>
+        <p class="mt-6 text-white/60 max-w-md text-lg">
+          Siłownia, zajęcia grupowe i trenerzy personalni w jednym miejscu.
+          Pierwszy tydzień treningu — bezpłatnie.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#pricing" class="bg-lime text-dark px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white transition">
+            Odbierz darmowy trening
+          </a>
+          <a href="#classes" class="border border-white/20 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:border-lime hover:text-lime transition">
+            Grafik zajęć
+          </a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img src="/showcase/img/pulsefit-dumbbells.jpg" alt="Strefa wolnych ciężarów PulseFit" class="aspect-square rounded-3xl object-cover w-full h-full" />
+        <div class="aspect-square rounded-3xl bg-panel border border-white/10 flex items-center justify-center text-6xl mt-8">🥇</div>
+        <img src="/showcase/img/pulsefit-shoes.jpg" alt="Trening cardio w PulseFit" class="aspect-square rounded-3xl object-cover w-full h-full" />
+        <img src="/showcase/img/pulsefit-crunches.jpg" alt="Trening siłowy w PulseFit" class="aspect-square rounded-3xl object-cover w-full h-full mt-[-2rem]" />
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="border-y border-white/5 bg-panel">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-10 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">1200+</p>
+        <p class="text-xs uppercase tracking-widest text-white/50 mt-2">Członków</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">18</p>
+        <p class="text-xs uppercase tracking-widest text-white/50 mt-2">Trenerów</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">40+</p>
+        <p class="text-xs uppercase tracking-widest text-white/50 mt-2">Zajęć / tydz.</p>
+      </div>
+      <div>
+        <p class="font-display text-3xl sm:text-4xl text-lime">24/7</p>
+        <p class="text-xs uppercase tracking-widest text-white/50 mt-2">Dostęp</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASSES -->
+  <section id="classes" class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center mb-14">
+      <span class="text-lime uppercase tracking-[0.3em] text-xs font-bold">Grafik tygodnia</span>
+      <h2 class="font-display text-4xl sm:text-5xl mt-4">ZAJĘCIA GRUPOWE</h2>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm min-w-[640px]">
+        <thead>
+          <tr class="text-left text-white/40 uppercase text-xs tracking-widest border-b border-white/10">
+            <th class="py-3 pr-4">Godzina</th>
+            <th class="py-3 pr-4">Poniedziałek</th>
+            <th class="py-3 pr-4">Środa</th>
+            <th class="py-3 pr-4">Piątek</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5">
+          <tr>
+            <td class="py-4 pr-4 font-semibold text-white/50">07:00</td>
+            <td class="py-4 pr-4"><span class="bg-lime/10 text-lime px-3 py-1 rounded-full text-xs font-semibold">HIIT Burn</span></td>
+            <td class="py-4 pr-4"><span class="bg-white/5 px-3 py-1 rounded-full text-xs font-semibold text-white/60">Mobility</span></td>
+            <td class="py-4 pr-4"><span class="bg-lime/10 text-lime px-3 py-1 rounded-full text-xs font-semibold">HIIT Burn</span></td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-4 font-semibold text-white/50">12:30</td>
+            <td class="py-4 pr-4"><span class="bg-white/5 px-3 py-1 rounded-full text-xs font-semibold text-white/60">Yoga Flow</span></td>
+            <td class="py-4 pr-4"><span class="bg-lime/10 text-lime px-3 py-1 rounded-full text-xs font-semibold">Strength</span></td>
+            <td class="py-4 pr-4"><span class="bg-white/5 px-3 py-1 rounded-full text-xs font-semibold text-white/60">Yoga Flow</span></td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-4 font-semibold text-white/50">18:00</td>
+            <td class="py-4 pr-4"><span class="bg-lime/10 text-lime px-3 py-1 rounded-full text-xs font-semibold">Boxing</span></td>
+            <td class="py-4 pr-4"><span class="bg-lime/10 text-lime px-3 py-1 rounded-full text-xs font-semibold">CrossTrain</span></td>
+            <td class="py-4 pr-4"><span class="bg-lime/10 text-lime px-3 py-1 rounded-full text-xs font-semibold">Boxing</span></td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-4 font-semibold text-white/50">19:30</td>
+            <td class="py-4 pr-4"><span class="bg-white/5 px-3 py-1 rounded-full text-xs font-semibold text-white/60">Spinning</span></td>
+            <td class="py-4 pr-4"><span class="bg-white/5 px-3 py-1 rounded-full text-xs font-semibold text-white/60">Spinning</span></td>
+            <td class="py-4 pr-4"><span class="bg-lime/10 text-lime px-3 py-1 rounded-full text-xs font-semibold">Open Gym Party</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- TRAINERS -->
+  <section id="trainers" class="bg-panel border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+      <div class="text-center mb-14">
+        <span class="text-lime uppercase tracking-[0.3em] text-xs font-bold">Poznaj zespół</span>
+        <h2 class="font-display text-4xl sm:text-5xl mt-4">NASI TRENERZY</h2>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="aspect-square rounded-2xl bg-gradient-to-br from-lime/20 to-dark border border-white/10 flex items-center justify-center text-5xl mb-4">🧑‍🦱</div>
+          <p class="font-bold">Kuba Nowicki</p>
+          <p class="text-xs text-white/40 uppercase tracking-widest mt-1">Siła &amp; Kondycja</p>
+        </div>
+        <div class="text-center">
+          <div class="aspect-square rounded-2xl bg-gradient-to-br from-lime/20 to-dark border border-white/10 flex items-center justify-center text-5xl mb-4">👩</div>
+          <p class="font-bold">Ola Wiśniewska</p>
+          <p class="text-xs text-white/40 uppercase tracking-widest mt-1">Yoga &amp; Mobility</p>
+        </div>
+        <div class="text-center">
+          <div class="aspect-square rounded-2xl bg-gradient-to-br from-lime/20 to-dark border border-white/10 flex items-center justify-center text-5xl mb-4">🧔</div>
+          <p class="font-bold">Marek Zych</p>
+          <p class="text-xs text-white/40 uppercase tracking-widest mt-1">Boks</p>
+        </div>
+        <div class="text-center">
+          <div class="aspect-square rounded-2xl bg-gradient-to-br from-lime/20 to-dark border border-white/10 flex items-center justify-center text-5xl mb-4">👱‍♀️</div>
+          <p class="font-bold">Nina Kowal</p>
+          <p class="text-xs text-white/40 uppercase tracking-widest mt-1">HIIT &amp; Cardio</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center mb-14">
+      <span class="text-lime uppercase tracking-[0.3em] text-xs font-bold">Karnety</span>
+      <h2 class="font-display text-4xl sm:text-5xl mt-4">WYBIERZ SWÓJ PLAN</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="bg-panel border border-white/10 rounded-3xl p-8">
+        <p class="font-bold uppercase tracking-widest text-sm text-white/50">Basic</p>
+        <p class="font-display text-4xl mt-3 mb-1">99 zł<span class="text-sm font-sans text-white/40">/mc</span></p>
+        <ul class="text-sm text-white/60 space-y-2 mt-6 mb-8">
+          <li>✓ Dostęp do siłowni</li>
+          <li>✓ Szatnia i prysznice</li>
+          <li>✗ Zajęcia grupowe</li>
+        </ul>
+        <a href="#" class="block text-center border border-white/20 rounded-full py-3 text-xs font-bold uppercase tracking-widest hover:border-lime hover:text-lime transition">Wybierz</a>
+      </div>
+      <div class="bg-lime text-dark rounded-3xl p-8 scale-105 shadow-2xl shadow-lime/20 relative">
+        <span class="absolute -top-3 right-6 bg-dark text-lime text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">Popularny</span>
+        <p class="font-bold uppercase tracking-widest text-sm">Pro</p>
+        <p class="font-display text-4xl mt-3 mb-1">169 zł<span class="text-sm font-sans">/mc</span></p>
+        <ul class="text-sm space-y-2 mt-6 mb-8 font-medium">
+          <li>✓ Dostęp do siłowni 24/7</li>
+          <li>✓ Wszystkie zajęcia grupowe</li>
+          <li>✓ 1x konsultacja z trenerem</li>
+        </ul>
+        <a href="#" class="block text-center bg-dark text-lime rounded-full py-3 text-xs font-bold uppercase tracking-widest hover:bg-black transition">Wybierz</a>
+      </div>
+      <div class="bg-panel border border-white/10 rounded-3xl p-8">
+        <p class="font-bold uppercase tracking-widest text-sm text-white/50">Elite</p>
+        <p class="font-display text-4xl mt-3 mb-1">299 zł<span class="text-sm font-sans text-white/40">/mc</span></p>
+        <ul class="text-sm text-white/60 space-y-2 mt-6 mb-8">
+          <li>✓ Wszystko z planu Pro</li>
+          <li>✓ 4x trening personalny</li>
+          <li>✓ Plan dietetyczny</li>
+        </ul>
+        <a href="#" class="block text-center border border-white/20 rounded-full py-3 text-xs font-bold uppercase tracking-widest hover:border-lime hover:text-lime transition">Wybierz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="contact" class="bg-gradient-to-br from-lime/10 via-dark to-dark border-t border-white/5">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 py-20 text-center">
+      <h2 class="font-display text-3xl sm:text-5xl mb-4">PIERWSZY TRENING<br/><span class="text-lime">NA NAS</span></h2>
+      <p class="text-white/60 mb-8">Wpadnij do klubu, poznaj trenerów i wypróbuj sprzęt — bez zobowiązań.</p>
+      <a href="#" class="inline-block bg-lime text-dark px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white transition">
+        Umów wizytę
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
+      <p class="font-display text-lg text-white">PULSE<span class="text-lime">FIT</span></p>
+      <p>ul. Sportowa 8, 00-456 Warszawa · pn–pt 06:00–23:00</p>
+      <p>© 2026 PulseFit — projekt demonstracyjny</p>
+    </div>
+  </footer>
+
+</body>
+</html>

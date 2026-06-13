@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Root &amp; Bloom — Sklep z roślinami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          moss: '#3f5b3f',
+          fern: '#5e7d4f',
+          sage: '#e7ead9',
+          clay: '#c98a5c',
+          paper: '#fbf8f1',
+        }
+      }
+    }
+  }
+</script>
+<style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-paper text-moss">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur border-b border-moss/10">
+    <nav class="max-w-6xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#" class="font-display text-2xl font-semibold flex items-center gap-2">
+        🌿 Root &amp; <span class="text-clay">Bloom</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-moss/70">
+        <a href="#shop" class="hover:text-fern transition">Rośliny</a>
+        <a href="#accessories" class="hover:text-fern transition">Akcesoria</a>
+        <a href="#care" class="hover:text-fern transition">Porady</a>
+        <a href="#about" class="hover:text-fern transition">O nas</a>
+      </div>
+      <a href="#shop" class="bg-moss text-paper px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-fern transition">
+        Zobacz sklep
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="max-w-6xl mx-auto px-6 lg:px-10 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="inline-block bg-sage text-fern text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full">Dostawa w 24h</span>
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold mt-5 leading-[1.05]">
+        Zazielen<br/>swoje <span class="text-fern">wnętrze</span>
+      </h1>
+      <p class="mt-6 text-moss/60 max-w-md leading-relaxed text-lg">
+        Starannie wyselekcjonowane rośliny doniczkowe, donice ręcznie robione
+        i wszystko, czego potrzebujesz, by Twój dom zaczął oddychać.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="#shop" class="bg-moss text-paper px-8 py-4 rounded-full font-semibold text-sm hover:bg-fern transition">
+          Przeglądaj rośliny
+        </a>
+        <a href="#care" class="border border-moss/20 px-8 py-4 rounded-full font-semibold text-sm hover:border-fern hover:text-fern transition">
+          Poradnik pielęgnacji
+        </a>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+      <img src="/showcase/img/rootbloom-monstera.jpg" alt="Monstera w doniczce" class="aspect-[3/4] rounded-3xl object-cover w-full h-full col-span-2 row-span-2" />
+      <img src="/showcase/img/rootbloom-cactus.jpg" alt="Kaktus w glinianej doniczce" class="aspect-square rounded-3xl object-cover w-full h-full" />
+      <img src="/showcase/img/rootbloom-soil.jpg" alt="Sadzenie roślin" class="aspect-square rounded-3xl object-cover w-full h-full" />
+      <div class="aspect-square rounded-3xl bg-gradient-to-br from-sage to-clay/30 flex items-center justify-center text-4xl col-span-2">🍃 🌿 🪴</div>
+    </div>
+  </section>
+
+  <!-- FEATURE STRIP -->
+  <section class="bg-sage/60 border-y border-moss/10">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 py-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-sm font-medium">
+      <div>🚚 Bezpieczna dostawa</div>
+      <div>🌱 30 dni gwarancji</div>
+      <div>🪴 Donice z certyfikatem</div>
+      <div>📖 Poradnik z każdą roślinką</div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" class="max-w-6xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center mb-14">
+      <span class="text-fern uppercase tracking-[0.3em] text-xs font-semibold">Bestsellery</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold mt-3">Polecane rośliny</h2>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div class="group cursor-pointer">
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-sage to-fern/30 flex items-center justify-center text-5xl mb-3 group-hover:scale-[1.02] transition">🌴</div>
+        <p class="font-semibold text-sm">Monstera Deliciosa</p>
+        <p class="text-sm text-moss/50">129 zł</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-clay/20 to-sage flex items-center justify-center text-5xl mb-3 group-hover:scale-[1.02] transition">🌵</div>
+        <p class="font-semibold text-sm">Kaktus Złoty</p>
+        <p class="text-sm text-moss/50">49 zł</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-fern/30 to-sage flex items-center justify-center text-5xl mb-3 group-hover:scale-[1.02] transition">🌿</div>
+        <p class="font-semibold text-sm">Paproć Bostońska</p>
+        <p class="text-sm text-moss/50">69 zł</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-sage to-clay/20 flex items-center justify-center text-5xl mb-3 group-hover:scale-[1.02] transition">🌳</div>
+        <p class="font-semibold text-sm">Fikus Lyrata</p>
+        <p class="text-sm text-moss/50">189 zł</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESSORIES -->
+  <section id="accessories" class="bg-moss text-paper">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 py-24 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-fern/40 to-moss border border-paper/10 flex items-center justify-center text-5xl">🏺</div>
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-clay/30 to-moss border border-paper/10 flex items-center justify-center text-5xl mt-6">🧴</div>
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-clay/30 to-moss border border-paper/10 flex items-center justify-center text-5xl">✂️</div>
+        <div class="aspect-square rounded-2xl bg-gradient-to-br from-fern/40 to-moss border border-paper/10 flex items-center justify-center text-5xl mt-[-1.5rem]">🪣</div>
+      </div>
+      <div>
+        <span class="text-clay uppercase tracking-[0.3em] text-xs font-semibold">Akcesoria</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold mt-3 mb-6">Wszystko dla Twoich roślin</h2>
+        <p class="text-paper/70 leading-relaxed mb-8">
+          Donice ceramiczne robione ręcznie, organiczny nawóz, nożyczki do przycinania
+          i nawilżacze powietrza — wybraliśmy tylko produkty, które sami testujemy w domu.
+        </p>
+        <a href="#" class="inline-block bg-clay text-paper px-8 py-4 rounded-full font-semibold text-sm hover:bg-clay/80 transition">
+          Zobacz akcesoria
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARE TIPS -->
+  <section id="care" class="max-w-6xl mx-auto px-6 lg:px-10 py-24">
+    <div class="text-center mb-14">
+      <span class="text-fern uppercase tracking-[0.3em] text-xs font-semibold">Poradnik</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold mt-3">Jak dbać o rośliny</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-sage/50 rounded-2xl p-8">
+        <div class="text-3xl mb-4">💧</div>
+        <h3 class="font-display text-xl font-semibold mb-2">Podlewanie</h3>
+        <p class="text-sm text-moss/60 leading-relaxed">Sprawdź wilgotność ziemi palcem — większość roślin lubi lekko przesychać między podlewaniami.</p>
+      </div>
+      <div class="bg-sage/50 rounded-2xl p-8">
+        <div class="text-3xl mb-4">☀️</div>
+        <h3 class="font-display text-xl font-semibold mb-2">Światło</h3>
+        <p class="text-sm text-moss/60 leading-relaxed">Rozproszone światło dzienne to najlepsze miejsce dla większości roślin domowych.</p>
+      </div>
+      <div class="bg-sage/50 rounded-2xl p-8">
+        <div class="text-3xl mb-4">🌡️</div>
+        <h3 class="font-display text-xl font-semibold mb-2">Temperatura</h3>
+        <p class="text-sm text-moss/60 leading-relaxed">Unikaj przeciągów i miejsc blisko kaloryferów — rośliny lubią stabilność.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / NEWSLETTER -->
+  <section id="about" class="bg-sage/60 border-t border-moss/10">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 py-20 text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3">Dołącz do naszej społeczności</h2>
+      <p class="text-moss/60 mb-8">Co tydzień wskazówki pielęgnacyjne i pierwszy dostęp do nowych roślin.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" placeholder="Twój e-mail" class="flex-1 bg-paper border border-moss/20 rounded-full px-5 py-3.5 text-sm focus:outline-none focus:border-fern" />
+        <button type="button" class="bg-moss text-paper px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-fern transition">Zapisz się</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-moss text-paper/60">
+    <div class="max-w-6xl mx-auto px-6 lg:px-10 py-12 grid sm:grid-cols-3 gap-10 text-sm">
+      <div>
+        <p class="font-display text-2xl text-paper font-semibold mb-3">🌿 Root &amp; <span class="text-clay">Bloom</span></p>
+        <p>Rośliny i akcesoria<br/>z dostawą do domu.</p>
+      </div>
+      <div>
+        <p class="text-paper uppercase tracking-widest text-xs font-semibold mb-3">Sklep</p>
+        <p>Rośliny doniczkowe</p><p>Donice</p><p>Akcesoria</p>
+      </div>
+      <div>
+        <p class="text-paper uppercase tracking-widest text-xs font-semibold mb-3">Kontakt</p>
+        <p>hello@rootandbloom.pl</p>
+        <p>+48 600 222 333</p>
+      </div>
+    </div>
+    <div class="text-center text-xs py-4 border-t border-paper/10">© 2026 Root &amp; Bloom — projekt demonstracyjny</div>
+  </footer>
+
+</body>
+</html>

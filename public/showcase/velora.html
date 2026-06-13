@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VELORA — Studio mody</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Bodoni Moda"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          blush: '#e8d3cb',
+          sand: '#f4efe9',
+          ink: '#1a1816',
+        }
+      }
+    }
+  }
+</script>
+<style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-sand text-ink">
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="bg-ink text-sand text-center text-xs uppercase tracking-[0.25em] py-2.5">
+    Darmowa dostawa od 250 zł — Nowa kolekcja już dostępna
+  </div>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-sand/90 backdrop-blur border-b border-ink/10">
+    <nav class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <div class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium">
+        <a href="#new" class="hover:opacity-50 transition">Nowości</a>
+        <a href="#collection" class="hover:opacity-50 transition">Kolekcje</a>
+        <a href="#about" class="hover:opacity-50 transition">O marce</a>
+      </div>
+      <a href="#" class="font-display text-3xl font-bold tracking-[0.15em]">VELORA</a>
+      <div class="flex items-center gap-5 text-sm">
+        <span class="hidden sm:inline text-xs uppercase tracking-[0.2em]">Szukaj</span>
+        <span class="hidden sm:inline text-xs uppercase tracking-[0.2em]">Konto</span>
+        <span class="relative">
+          🛍️
+          <span class="absolute -top-1.5 -right-2 bg-ink text-sand text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+        </span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-10 lg:py-16">
+    <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+      <div class="order-2 lg:order-1 flex flex-col justify-center py-8">
+        <span class="text-xs uppercase tracking-[0.3em] text-ink/50">Kolekcja Wiosna / Lato 2026</span>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] mt-4">
+          Lekkość<br/>w każdym<br/>detalu
+        </h1>
+        <p class="mt-6 text-ink/60 max-w-md leading-relaxed">
+          Minimalistyczne kroje, naturalne tkaniny i paleta inspirowana wybrzeżem Morza Śródziemnego.
+          Odkryj kolekcję stworzoną do noszenia każdego dnia.
+        </p>
+        <div class="mt-8 flex gap-4">
+          <a href="#collection" class="bg-ink text-sand px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium hover:bg-ink/80 transition">
+            Zobacz kolekcję
+          </a>
+          <a href="#new" class="border border-ink px-8 py-4 text-xs uppercase tracking-[0.25em] font-medium hover:bg-ink hover:text-sand transition">
+            Nowości
+          </a>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2 grid grid-cols-2 gap-4">
+        <img src="/showcase/img/velora-store.jpg" alt="Wnętrze butiku VELORA" class="aspect-[3/4] rounded-sm object-cover w-full h-full row-span-2" />
+        <img src="/showcase/img/velora-flatlay.jpg" alt="Ubrania z kolekcji VELORA" class="aspect-square rounded-sm object-cover w-full h-full" />
+        <img src="/showcase/img/velora-sunglasses.jpg" alt="Okulary z kolekcji VELORA" class="aspect-square rounded-sm object-cover w-full h-full" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY STRIP -->
+  <section id="new" class="max-w-7xl mx-auto px-6 lg:px-10 py-12 border-t border-ink/10">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold">Bestsellery</h2>
+      <a href="#" class="text-xs uppercase tracking-[0.2em] border-b border-ink pb-1">Zobacz wszystko</a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div class="group cursor-pointer">
+        <div class="aspect-[3/4] rounded-sm bg-gradient-to-br from-[#e3d6cd] to-[#c7b3a6] flex items-center justify-center text-5xl mb-3 group-hover:opacity-80 transition">🧥</div>
+        <p class="text-sm font-medium">Płaszcz oversize</p>
+        <p class="text-sm text-ink/50">429 zł</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="aspect-[3/4] rounded-sm bg-gradient-to-br from-[#d6cfc4] to-[#a89c8c] flex items-center justify-center text-5xl mb-3 group-hover:opacity-80 transition">👖</div>
+        <p class="text-sm font-medium">Spodnie szerokie lniane</p>
+        <p class="text-sm text-ink/50">219 zł</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="aspect-[3/4] rounded-sm bg-gradient-to-br from-ink to-[#4a4338] flex items-center justify-center text-5xl mb-3 group-hover:opacity-80 transition">👔</div>
+        <p class="text-sm font-medium">Koszula z satyny</p>
+        <p class="text-sm text-ink/50">259 zł</p>
+      </div>
+      <div class="group cursor-pointer">
+        <div class="aspect-[3/4] rounded-sm bg-gradient-to-br from-blush to-[#e8d3cb] flex items-center justify-center text-5xl mb-3 group-hover:opacity-80 transition">👟</div>
+        <p class="text-sm font-medium">Sneakersy minimal</p>
+        <p class="text-sm text-ink/50">389 zł</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION BANNER -->
+  <section id="collection" class="bg-ink text-sand">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 grid lg:grid-cols-3 gap-8 items-center">
+      <div class="lg:col-span-1">
+        <span class="text-xs uppercase tracking-[0.3em] text-sand/50">Kapsuła sezonu</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-6">Linea Riviera</h2>
+        <p class="text-sand/60 leading-relaxed mb-8">
+          12 elementów, które można łączyć w nieskończoność. Stworzona dla osób, które
+          podróżują dużo, a pakują mało.
+        </p>
+        <a href="#" class="inline-block border border-sand/40 px-8 py-4 text-xs uppercase tracking-[0.25em] hover:bg-sand hover:text-ink transition">
+          Odkryj kapsułę
+        </a>
+      </div>
+      <div class="lg:col-span-2 grid grid-cols-3 gap-4">
+        <div class="aspect-[3/4] rounded-sm bg-gradient-to-br from-[#3a352f] to-ink flex items-center justify-center text-5xl">🧣</div>
+        <div class="aspect-[3/4] rounded-sm bg-gradient-to-br from-blush to-[#c7b3a6] flex items-center justify-center text-5xl">👚</div>
+        <div class="aspect-[3/4] rounded-sm bg-gradient-to-br from-[#5c5347] to-[#2a261f] flex items-center justify-center text-5xl">🩴</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-5xl mx-auto px-6 lg:px-10 py-24 text-center">
+    <span class="text-xs uppercase tracking-[0.3em] text-ink/50">Filozofia marki</span>
+    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-3 mb-6">Moda, która ma sens</h2>
+    <p class="text-ink/60 leading-relaxed max-w-2xl mx-auto">
+      VELORA powstała z przekonania, że dobra szafa nie musi być duża. Projektujemy ubrania
+      z certyfikowanych, naturalnych tkanin, produkowane w niewielkich seriach w Europie —
+      bez pośpiechu i bez kompromisów.
+    </p>
+    <div class="grid sm:grid-cols-3 gap-8 mt-14">
+      <div class="border-t border-ink/10 pt-6">
+        <p class="font-display text-2xl font-bold mb-2">100%</p>
+        <p class="text-sm text-ink/50 uppercase tracking-widest">Naturalne tkaniny</p>
+      </div>
+      <div class="border-t border-ink/10 pt-6">
+        <p class="font-display text-2xl font-bold mb-2">EU</p>
+        <p class="text-sm text-ink/50 uppercase tracking-widest">Produkcja lokalna</p>
+      </div>
+      <div class="border-t border-ink/10 pt-6">
+        <p class="font-display text-2xl font-bold mb-2">30 dni</p>
+        <p class="text-sm text-ink/50 uppercase tracking-widest">Na zwrot</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="bg-blush/40">
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 py-16 text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-3">Bądź na bieżąco</h2>
+      <p class="text-ink/60 mb-8">Zapisz się i otrzymaj 10% rabatu na pierwsze zamówienie.</p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" placeholder="Twój adres e-mail" class="flex-1 bg-sand border border-ink/20 px-5 py-3.5 text-sm focus:outline-none focus:border-ink" />
+        <button type="button" class="bg-ink text-sand px-8 py-3.5 text-xs uppercase tracking-[0.25em] font-medium hover:bg-ink/80 transition">Zapisz się</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink text-sand/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid sm:grid-cols-4 gap-10 text-sm">
+      <div>
+        <p class="font-display text-2xl text-sand font-bold tracking-[0.15em] mb-3">VELORA</p>
+        <p>Minimalistyczna moda<br/>dla codziennego życia.</p>
+      </div>
+      <div>
+        <p class="text-sand uppercase tracking-widest text-xs font-semibold mb-3">Sklep</p>
+        <p>Nowości</p><p>Kolekcje</p><p>Outlet</p>
+      </div>
+      <div>
+        <p class="text-sand uppercase tracking-widest text-xs font-semibold mb-3">Obsługa</p>
+        <p>Dostawa i zwroty</p><p>Rozmiary</p><p>Kontakt</p>
+      </div>
+      <div>
+        <p class="text-sand uppercase tracking-widest text-xs font-semibold mb-3">Social</p>
+        <p>Instagram</p><p>Pinterest</p><p>TikTok</p>
+      </div>
+    </div>
+    <div class="text-center text-xs py-4 border-t border-sand/10">© 2026 VELORA — projekt demonstracyjny</div>
+  </footer>
+
+</body>
+</html>
