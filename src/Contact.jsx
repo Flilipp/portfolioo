@@ -1,4 +1,41 @@
+import { useState } from 'react';
+
 export default function Contact() {
+  const [status, setStatus] = useState('idle');
+  const [feedback, setFeedback] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus('loading');
+    setFeedback('');
+
+    const formData = new FormData(event.currentTarget);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Nie udało się wysłać wiadomości');
+      }
+
+      setStatus('success');
+      setFeedback('Wiadomość została wysłana. Odezwę się na podany adres.');
+      event.currentTarget.reset();
+    } catch (error) {
+      setStatus('error');
+      setFeedback(error instanceof Error ? error.message : 'Wystąpił błąd');
+    }
+  };
+
   return (
     <section id="contact" className="w-full min-h-0 flex flex-col justify-center px-6 sm:px-10 md:px-16 lg:px-20 py-16 md:py-20 bg-transparent border-t border-[#C8A96E]/10 relative z-10">
 
@@ -9,40 +46,56 @@ export default function Contact() {
             Wytnijmy nudę. <span className="text-[#C8A96E]">Zbudujmy coś.</span>
           </h2>
 
-          <form className="space-y-6 font-mono" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6 font-mono" onSubmit={handleSubmit}>
             <div>
               <label className="block text-[10px] text-gray-500 uppercase tracking-widest mb-1">ID / Nazwa</label>
               <input
+                name="name"
                 type="text"
                 className="w-full bg-[#161616] border border-white/5 rounded p-3 text-sm text-white outline-none focus:border-[#C8A96E]/60 transition-colors duration-300"
                 placeholder="np. Anonimowy Klient"
+                required
               />
             </div>
 
             <div>
               <label className="block text-[10px] text-gray-500 uppercase tracking-widest mb-1">Kanał Zwrotny (Email)</label>
               <input
+                name="email"
                 type="email"
                 className="w-full bg-[#161616] border border-white/5 rounded p-3 text-sm text-white outline-none focus:border-[#C8A96E]/60 transition-colors duration-300"
                 placeholder="user@domain.com"
+                required
               />
             </div>
 
             <div>
               <label className="block text-[10px] text-gray-500 uppercase tracking-widest mb-1">Specyfikacja Zadania (Wiadomość)</label>
               <textarea
+                name="message"
                 rows="4"
                 className="w-full bg-[#161616] border border-white/5 rounded p-3 text-sm text-white outline-none focus:border-[#C8A96E]/60 transition-colors duration-300 resize-none"
                 placeholder="Opisz czego potrzebujesz..."
+                required
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#C8A96E] text-[#111111] hover:bg-[#bfa165] font-bold text-xs uppercase tracking-widest py-4 rounded transition-all duration-300 shadow-[0_4px_20px_rgba(200,169,110,0.15)]"
+              disabled={status === 'loading'}
+              className="w-full bg-[#C8A96E] text-[#111111] hover:bg-[#bfa165] disabled:opacity-60 disabled:cursor-not-allowed font-bold text-xs uppercase tracking-widest py-4 rounded transition-all duration-300 shadow-[0_4px_20px_rgba(200,169,110,0.15)]"
             >
-              Wyślij Żądanie
+              {status === 'loading' ? 'Wysyłanie...' : 'Wyślij Żądanie'}
             </button>
+
+            {feedback && (
+              <p
+                className={`text-sm ${status === 'error' ? 'text-red-400' : 'text-[#C8A96E]'}`}
+                aria-live="polite"
+              >
+                {feedback}
+              </p>
+            )}
           </form>
         </div>
 
