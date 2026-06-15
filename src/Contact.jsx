@@ -52,7 +52,7 @@ export default function Contact() {
             <div className="space-y-4 text-sm">
               <div className="flex justify-between items-center border-b border-white/5 pb-3">
                 <span className="text-gray-500">Email</span>
-                <span className="text-gray-300">kontakt@filipwiktor.dev</span>
+                <span className="text-gray-300">makeforge@gmail.com</span>
               </div>
               <div className="flex justify-between items-center border-b border-white/5 pb-3">
                 <span className="text-gray-500">Lokalizacja</span>

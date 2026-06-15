@@ -87,21 +87,6 @@ const projectsData = [
   },
   {
     id: 6,
-    title: 'PULSEFIT',
-    tagline: 'Strona siłowni z grafikiem zajęć, cennikiem karnetów i zapisami na trening — mocny, energetyczny design.',
-    tech: ['HTML', 'Tailwind CSS', 'Responsywny design'],
-    gallery: [
-      { src: '/projects/pulsefit/hero.jpg', label: 'Strona startowa' },
-      { src: '/projects/pulsefit/pricing.jpg', label: 'Cennik karnetów' },
-    ],
-    desc: 'Strona klubu fitness z sekcją statystyk, grafikiem zajęć grupowych, profilami trenerów oraz trzema planami cenowymi karnetów.',
-    challenge: 'Mocny, kontrastowy design (czarny + neonowa zieleń) i czytelna tabela grafiku zajęć na urządzeniach mobilnych.',
-    roles: {
-      filip: 'Struktura grafiku zajęć, dane trenerów i cennik',
-      wiktor: 'Layout, paleta neonowa, tabela zajęć i karty cenowe',
-    },
-  },
-  {
     id: 7,
     title: 'GLOW STUDIO',
     tagline: 'Strona salonu kosmetycznego z cennikiem usług, galerią metamorfoz i rezerwacją wizyt online.',
