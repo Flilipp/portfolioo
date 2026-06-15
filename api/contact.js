@@ -1,6 +1,6 @@
 const resendApiKey = process.env.RESEND_API_KEY;
 const contactToEmail = process.env.CONTACT_TO_EMAIL;
-const contactFromEmail = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
+const contactFromEmail = process.env.CONTACT_FROM_EMAIL;
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -8,10 +8,10 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  if (!resendApiKey || !contactToEmail) {
+  if (!resendApiKey || !contactToEmail || !contactFromEmail) {
     return res.status(500).json({
-      message: 'Missing RESEND_API_KEY or CONTACT_TO_EMAIL environment variables',
-      hint: 'Ustaw te zmienne w Vercel w sekcji Project Settings -> Environment Variables.',
+      message: 'Missing RESEND_API_KEY, CONTACT_TO_EMAIL or CONTACT_FROM_EMAIL environment variables',
+      hint: 'Ustaw te zmienne w Vercel w sekcji Project Settings -> Environment Variables i podaj zweryfikowany adres nadawcy. Może to być także Gmail, jeśli Resend go zaakceptuje jako verified sender.',
     });
   }
 
