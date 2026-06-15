@@ -8,7 +8,7 @@ const projectsData = [
   {
     id: 1,
     title: 'MAKEFORGE',
-    tagline: 'Portfolio technologiczne młodego robotyka — prezentuje własne projekty (roboty, gadżety, AI) razem z pełną dokumentacją techniczną.',
+    tagline: 'Portfolio technologiczne młodego robotyka - prezentuje własne projekty (roboty, gadżety, AI) razem z pełną dokumentacją techniczną.',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'Arduino'],
     gallery: [
       { src: '/projects/makeforge-hero.jpg', label: 'Strona startowa' },
@@ -498,12 +498,6 @@ export default function ProjectsRing() {
       id="projects"
       className="w-full bg-transparent py-12 md:py-16 px-4 sm:px-6 lg:px-10 flex flex-col items-center relative"
     >
-      <div className="text-center mb-6 md:mb-8 font-mono text-xs text-gray-500 pointer-events-none tracking-widest relative z-10 max-w-lg">
-        <span className="text-[#C8A96E] font-bold">// ELASTIC VAULT INSTANCE</span>
-        <span className="hidden md:inline"> — NAJEŻDŹ KURSOREM I PRZEWIŃ KÓŁKIEM</span>
-        <span className="md:hidden block mt-1 text-gray-600">przesuń palcem w bok</span>
-      </div>
-
       <div className="text-center mb-8 md:mb-10 max-w-2xl relative z-10 px-4">
         <p className="text-base sm:text-lg md:text-xl text-white font-semibold leading-snug">
           {activeProject.tagline}
