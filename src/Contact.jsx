@@ -6,10 +6,11 @@ export default function Contact() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
     setStatus('loading');
     setFeedback('');
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
     try {
@@ -29,7 +30,7 @@ export default function Contact() {
 
       setStatus('success');
       setFeedback('Wiadomość została wysłana. Odezwę się na podany adres.');
-      event.currentTarget.reset();
+      form.reset();
     } catch (error) {
       setStatus('error');
       setFeedback(error instanceof Error ? error.message : 'Wystąpił błąd');
